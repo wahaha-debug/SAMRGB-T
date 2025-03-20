@@ -31,8 +31,8 @@ LOSS:
   NAME          : CrossEntropy     # loss function name (ohemce, ce, dice)
   CLS_WEIGHTS   : false            # use class weights in loss calculation
   WEIGHT_aux    : 0.008
-  WEIGHT_language  : 10
-  WEIGHT_prototype  : 1000
+  WEIGHT_language  : 100
+  WEIGHT_prototype  : 10000
 
 OPTIMIZER:
   NAME          : adamw           # optimizer name
