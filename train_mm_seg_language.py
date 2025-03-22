@@ -296,9 +296,14 @@ def main(cfg, gpu, save_dir):
                                     'DDP'] else model.state_dict(),
                                 'optimizer_state_dict': optimizer.state_dict(),
                                 'loss': train_loss,
+                                'loss_aux': loss_aux,
+                                'loss_sam': loss_sam,
+                                'kl_loss': kl_loss,
+                                'prototype_loss': prototype_loss,
                                 'scheduler_state_dict': scheduler.state_dict(),
                                 'best_miou': best_mIoU,
                                 }, cur_best_ckp)
+
 
                     # 输出当前模型在验证集上的各项指标
                     logger.info(print_iou(epoch, ious, miou, acc, macc, class_names))
