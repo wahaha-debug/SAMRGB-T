@@ -77,9 +77,9 @@ def main(cfg, gpu, save_dir):
     for param in model.sam.sam_mask_decoder.pred_obj_score_head.parameters():  # 冻结 `pred_obj_score_head` 模块的所有参数。
         param.requires_grad = False  # `pred_obj_score_head` 可能是预测目标分数（如目标置信度）的模块，这里也不参与训练。
     for param in model.sam.memory_attention.parameters():  # 解冻 `memory_attention` 模块的参数。
-        param.requires_grad = True  # 允许该模块在训练过程中更新权重，通常表示希望微调这一部分以适应新任务。
+        param.requires_grad = False  # 允许该模块在训练过程中更新权重，通常表示希望微调这一部分以适应新任务。
     for param in model.sam.memory_encoder.parameters():  # 解冻 `memory_encoder` 模块的参数。
-        param.requires_grad = True  # 允许该部分的参数在训练中更新，用于学习新的任务特征。
+        param.requires_grad = False  # 允许该部分的参数在训练中更新，用于学习新的任务特征。
     for param in model.sam.sam_prompt_encoder.parameters():  # 冻结 `sam_prompt_encoder` 模块的参数。
         param.requires_grad = False  # `sam_prompt_encoder` 可能是模型中用于处理输入提示（prompt）的模块。
 
