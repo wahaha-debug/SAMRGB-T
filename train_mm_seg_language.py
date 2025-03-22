@@ -138,6 +138,10 @@ def main(cfg, gpu, save_dir):
         start_epoch = resume_checkpoint['epoch'] - 1  # 恢复训练的 epoch
         optimizer.load_state_dict(resume_checkpoint['optimizer_state_dict'])  # 恢复优化器的状态
         scheduler.load_state_dict(resume_checkpoint['scheduler_state_dict'])  # 恢复学习率调度器的状态
+        loss_sam = resume_checkpoint['loss_sam']  # 恢复损失值（用于监控训练进展）
+        prototype_loss = resume_checkpoint['prototype_loss']  # 恢复损失值（用于监控训练进展）
+        loss_aux = resume_checkpoint['loss_aux']  # 恢复损失值（用于监控训练进展）
+        kl_loss = resume_checkpoint['kl_loss']  # 恢复损失值（用于监控训练进展）
         loss = resume_checkpoint['loss']  # 恢复损失值（用于监控训练进展）
         best_mIoU = resume_checkpoint['best_miou']  # 恢复最好的 mIoU 值
 
